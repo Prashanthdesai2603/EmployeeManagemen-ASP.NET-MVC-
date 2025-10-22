@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Employee>
+@{
+    ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employees</h2>
+<p>@Html.ActionLink("Add Employee", "Create", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Date Of Joining</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var emp in Model)
+    {
+        <tr>
+            <td>@emp.FullName</td>
+            <td>@emp.Email</td>
+            <td>@emp.Phone</td>
+            <td>@emp.Department</td>
+            <td>@emp.DateOfJoining</td>
+            <td>@emp.Salary</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = emp.EmployeeId }, new { @class = "btn btn-info btn-sm" })
+                @Html.ActionLink("Edit", "Edit", new { id = emp.EmployeeId }, new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = emp.EmployeeId }, new { @class = "btn btn-danger btn-sm" })
+
+            </td>
+        </tr>
+    }
+</table>
